@@ -1,7 +1,7 @@
 """
 This file defines variables for the modelled legislation.
 
-A variable is a property of an Entity such as a Person, a Household…
+A variable is a property of an Entity such as a Commune, a Etat…
 
 See https://openfisca.org/doc/key-concepts/variables.html
 """
@@ -11,12 +11,12 @@ from openfisca_core.periods import MONTH
 from openfisca_core.variables import Variable
 
 # Import the Entities specifically defined for this tax and benefit system
-from openfisca_france_territoires.entities import Household, Person
+from openfisca_france_territoires.entities import Etat, Commune
 
 
 class basic_income(Variable):
     value_type = float
-    entity = Person
+    entity = Commune
     definition_period = MONTH
     label = "Basic income provided to adults"
     reference = "https://law.gov.example/basic_income"  # Always use the most official source
@@ -44,7 +44,7 @@ class basic_income(Variable):
 
 class housing_allowance(Variable):
     value_type = float
-    entity = Household
+    entity = Etat
     definition_period = MONTH
     label = "Housing allowance"
     reference = "https://law.gov.example/housing_allowance"  # Always use the most official source
@@ -71,7 +71,7 @@ class housing_allowance(Variable):
 # By default, you can use utf-8 characters in a variable. OpenFisca web API manages utf-8 encoding.
 class pension(Variable):
     value_type = float
-    entity = Person
+    entity = Commune
     definition_period = MONTH
     label = "Pension for the elderly. Pension attribuée aux personnes âgées. تقاعد."
     reference = ["https://fr.wikipedia.org/wiki/Retraite_(économie)", "https://ar.wikipedia.org/wiki/تقاعد"]
@@ -90,7 +90,7 @@ class pension(Variable):
 
 class parenting_allowance(Variable):
     value_type = float
-    entity = Household
+    entity = Etat
     definition_period = MONTH
     label = "Allowance for low income people with children to care for."
     documentation = "Loosely based on the Australian parenting pension."
@@ -111,7 +111,7 @@ class parenting_allowance(Variable):
         income_threshold = parenting_allowance.income_threshold
         income_condition = household_income <= income_threshold
 
-        is_single = household.nb_persons(Household.PARENT) == 1
+        is_single = household.nb_persons(Etat.PARENT) == 1
         ages = household.members("age", period)
         under_8 = household.any(ages < 8)
         under_6 = household.any(ages < 6)
@@ -124,7 +124,7 @@ class parenting_allowance(Variable):
 
 class household_income(Variable):
     value_type = float
-    entity = Household
+    entity = Etat
     definition_period = MONTH
     label = "The sum of the salaries of those living in a household"
 

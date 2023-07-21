@@ -1,7 +1,7 @@
 """
 This file defines variables for the modelled legislation.
 
-A variable is a property of an Entity such as a Person, a Household…
+A variable is a property of an Entity such as a Commune, a Etat…
 
 See https://openfisca.org/doc/key-concepts/variables.html
 """
@@ -12,13 +12,13 @@ from openfisca_core.periods import MONTH
 from openfisca_core.variables import Variable
 
 # Import the Entities specifically defined for this tax and benefit system
-from openfisca_france_territoires.entities import Person
+from openfisca_france_territoires.entities import Commune
 
 
 # This variable is a pure input: it doesn't have a formula
 class salary(Variable):
     value_type = float
-    entity = Person
+    entity = Commune
     definition_period = MONTH
     set_input = set_input_divide_by_period  # Optional attribute. Allows user to declare a salary for a year. OpenFisca will spread the yearly amount over the months contained in the year.
     label = "Salary"
@@ -27,7 +27,7 @@ class salary(Variable):
 
 class disposable_income(Variable):
     value_type = float
-    entity = Person
+    entity = Commune
     definition_period = MONTH
     label = "Actual amount available to the person at the end of the month"
     reference = "https://stats.gov.example/disposable_income"  # Some variables represent quantities used in economic models, and not defined by law. Always give the source of your definitions.

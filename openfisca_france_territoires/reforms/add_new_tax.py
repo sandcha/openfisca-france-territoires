@@ -12,12 +12,12 @@ from openfisca_core.reforms import Reform
 from openfisca_core.variables import Variable
 
 # Import the Entities specifically defined for this tax and benefit system
-from openfisca_france_territoires.entities import Person
+from openfisca_france_territoires.entities import Commune
 
 
 class has_car(Variable):
     value_type = bool
-    entity = Person
+    entity = Commune
     default_value = True
     definition_period = MONTH
     label = "The person has a car"
@@ -26,7 +26,7 @@ class has_car(Variable):
 
 class new_tax(Variable):
     value_type = float
-    entity = Person
+    entity = Commune
     definition_period = MONTH
     label = "New tax"
     reference = "https://law.gov.example/new_tax"  # Always use the most official source

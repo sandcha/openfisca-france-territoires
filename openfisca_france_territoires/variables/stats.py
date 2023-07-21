@@ -1,7 +1,7 @@
 """
 This file defines variables for the modelled legislation.
 
-A variable is a property of an Entity such as a Person, a Household…
+A variable is a property of an Entity such as a Commune, a Etat…
 
 See https://openfisca.org/doc/key-concepts/variables.html
 """
@@ -11,12 +11,12 @@ from openfisca_core.periods import MONTH
 from openfisca_core.variables import Variable
 
 # Import the Entities specifically defined for this tax and benefit system
-from openfisca_france_territoires.entities import Household
+from openfisca_france_territoires.entities import Etat
 
 
 class total_benefits(Variable):
     value_type = float
-    entity = Household
+    entity = Etat
     definition_period = MONTH
     label = "Sum of the benefits perceived by a household"
     reference = "https://stats.gov.example/benefits"
@@ -33,7 +33,7 @@ class total_benefits(Variable):
 
 class total_taxes(Variable):
     value_type = float
-    entity = Household
+    entity = Etat
     definition_period = MONTH
     label = "Sum of the taxes paid by a household"
     reference = "https://stats.gov.example/taxes"

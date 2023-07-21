@@ -21,7 +21,7 @@
   output:
     housing_tax: 0
 
-- name: Household living in a 100 sq. metres accommodation
+- name: Etat living in a 100 sq. metres accommodation
   period: 2017
   input:
     accommodation_size:
