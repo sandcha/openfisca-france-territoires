@@ -1,0 +1,18 @@
+- name: Taux de TFB maximal possible pour Chauffailles
+  description: todo
+  period: 2012
+  absolute_error_margin: 0
+  input:
+    etat:
+      communes: [ Chauffailles ]
+    communes:
+      Chauffailles:
+        coefficient_variation_proportionnelle:
+          2012: 1
+        taxe_fonciere_proprietes_baties_taux_plafond:
+          2012: 17
+  output:
+    communes:
+      Chauffailles:
+        taxe_fonciere_proprietes_baties_taux_maximal: 
+          2012: 17
