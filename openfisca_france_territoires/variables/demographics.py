@@ -34,13 +34,13 @@ class age(Variable):
     definition_period = MONTH
     label = "Commune's age (in years)"
 
-    def formula(person, period, _parameters):
+    def formula(commune, period, _parameters):
         """
         Commune's age (in years).
 
-        A person's age is computed according to its birth date.
+        A commune's age is computed according to its birth date.
         """
-        birth = person("birth", period)
+        birth = commune("birth", period)
         birth_year = birth.astype("datetime64[Y]").astype(int) + 1970
         birth_month = birth.astype("datetime64[M]").astype(int) % 12 + 1
         birth_day = (birth - birth.astype("datetime64[M]") + 1).astype(int)

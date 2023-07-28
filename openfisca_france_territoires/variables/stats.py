@@ -18,16 +18,16 @@ class total_benefits(Variable):
     value_type = float
     entity = Etat
     definition_period = MONTH
-    label = "Sum of the benefits perceived by a household"
+    label = "Sum of the benefits perceived by a etat"
     reference = "https://stats.gov.example/benefits"
 
-    def formula(household, period, _parameters):
+    def formula(etat, period, _parameters):
         """Total benefits."""
-        basic_income_i = household.members("basic_income", period)  # Calculates the value of basic_income for each member of the household
+        basic_income_i = etat.members("basic_income", period)  # Calculates the value of basic_income for each member of the etat
 
         return (
-            + household.sum(basic_income_i)  # Sum the household members basic incomes
-            + household("housing_allowance", period)
+            + etat.sum(basic_income_i)  # Sum the etat members basic incomes
+            + etat("housing_allowance", period)
             )
 
 
@@ -35,16 +35,16 @@ class total_taxes(Variable):
     value_type = float
     entity = Etat
     definition_period = MONTH
-    label = "Sum of the taxes paid by a household"
+    label = "Sum of the taxes paid by a etat"
     reference = "https://stats.gov.example/taxes"
 
-    def formula(household, period, _parameters):
+    def formula(etat, period, _parameters):
         """Total taxes."""
-        income_tax_i = household.members("income_tax", period)
-        social_security_contribution_i = household.members("social_security_contribution", period)
+        income_tax_i = etat.members("income_tax", period)
+        social_security_contribution_i = etat.members("social_security_contribution", period)
 
         return (
-            + household.sum(income_tax_i)
-            + household.sum(social_security_contribution_i)
-            + household("housing_tax", period.this_year) / 12
+            + etat.sum(income_tax_i)
+            + etat.sum(social_security_contribution_i)
+            + etat("housing_tax", period.this_year) / 12
             )

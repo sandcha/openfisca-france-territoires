@@ -1,5 +1,5 @@
 {
-    "persons": {
+    "communes": {
         "Alicia": {
             "birth": {
                 "ETERNITY": "1980-01-01"
@@ -23,9 +23,9 @@
             }
         }
     },
-    "households": {
+    "etats": {
         "_": {
-            "parents": ["Alicia", "Javier"],
+            "communes": ["Alicia", "Javier"],
             "total_benefits": {
                 "2017-01": null
             },

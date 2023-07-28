@@ -45,7 +45,7 @@ class add_dynamic_variable(Reform):
             entity = Commune,
             default_value = True,
             definition_period = MONTH,
-            label = "The person goes to school (only relevant for children)",
+            label = "The commune goes to school (only relevant for children)",
             reference = "https://law.gov.example/goes_to_school",
             )
 

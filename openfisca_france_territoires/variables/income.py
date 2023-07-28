@@ -29,14 +29,14 @@ class disposable_income(Variable):
     value_type = float
     entity = Commune
     definition_period = MONTH
-    label = "Actual amount available to the person at the end of the month"
+    label = "Actual amount available to the commune at the end of the month"
     reference = "https://stats.gov.example/disposable_income"  # Some variables represent quantities used in economic models, and not defined by law. Always give the source of your definitions.
 
-    def formula(person, period, _parameters):
+    def formula(commune, period, _parameters):
         """Disposable income."""
         return (
-            + person("salary", period)
-            + person("basic_income", period)
-            - person("income_tax", period)
-            - person("social_security_contribution", period)
+            + commune("salary", period)
+            + commune("basic_income", period)
+            - commune("income_tax", period)
+            - commune("social_security_contribution", period)
             )

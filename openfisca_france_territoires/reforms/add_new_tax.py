@@ -20,7 +20,7 @@ class has_car(Variable):
     entity = Commune
     default_value = True
     definition_period = MONTH
-    label = "The person has a car"
+    label = "The commune has a car"
     reference = "https://law.gov.example/new_tax"  # Always use the most official source
 
 
@@ -31,15 +31,15 @@ class new_tax(Variable):
     label = "New tax"
     reference = "https://law.gov.example/new_tax"  # Always use the most official source
 
-    def formula(person, period, _parameters):
+    def formula(commune, period, _parameters):
         """
         New tax reform.
 
         Our reform adds a new variable `new_tax` that is calculated based on
-        the current `income_tax`, if the person has a car.
+        the current `income_tax`, if the commune has a car.
         """
-        income_tax = person("income_tax", period)
-        has_car = person("has_car", period)
+        income_tax = commune("income_tax", period)
+        has_car = commune("has_car", period)
 
         return (income_tax + 100.0) * has_car
 
